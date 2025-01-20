@@ -9,7 +9,7 @@
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
-            background-color: rgba(34,71,255,0.88);
+            background-color: #f5f5f5; /* Bright background color */
             color: black; /* Black text */
         }
 
@@ -22,6 +22,7 @@
             height: 100vh;
             display: flex;
             justify-content: center;
+            text-align: center;
             align-items: center;
             background-color: rgba(60,75,118,0.69);
             color: white;
@@ -53,6 +54,7 @@
             margin: auto;
             background-color: white; /* Bright background for the book */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
         }
 
         /* Book */
@@ -75,6 +77,10 @@
             transform-origin: left;
             transition: transform 0.8s;
             z-index: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3em;
+            align-items: center;
         }
 
         .page.turn {
@@ -110,68 +116,98 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
-        /* Beverage Card Styles */
-        .beverages-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .beverages-card h3 {
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
         .card-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 31px;
         }
 
-        .beverage-item {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .price {
+            font-size: 1.2rem;
+            color: #28a745; /* Green for price */
+            font-weight: bold;
         }
 
-        .beverage-item h4 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
-        }
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            /* For medium-sized screens (tablets and below) */
+            .welcome-screen h1 {
+                font-size: 2.5rem;
+            }
 
-        .beverage-item ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+            .welcome-screen h2 {
+                font-size: 1.5rem;
+            }
 
-        .beverage-item ul li {
-            font-size: 1rem;
-            margin-bottom: 5px;
-            color: #555;
+            .book-container {
+                width: 70vw; /* Increase size slightly */
+                height: 70vh; /* Increase size slightly */
+            }
+
+            .page h2 {
+                font-size: 2rem;
+            }
         }
 
         @media (max-width: 768px) {
-            .card-content {
-                grid-template-columns: 1fr; /* Stack the items vertically on smaller screens */
+            /* For smaller screens (phones in portrait mode) */
+            .welcome-screen h1 {
+                font-size: 2rem;
+            }
+
+            .welcome-screen h2 {
+                font-size: 1.2rem;
+            }
+
+            .book-container {
+                width: 80vw; /* Further increase size */
+                height: 80vh; /* Further increase size */
+            }
+
+            .page h2 {
+                font-size: 1.5rem;
+            }
+
+            .nav-buttons button {
+                padding: 8px 15px;
+                font-size: 16px;
             }
         }
+
+        @media (max-width: 480px) {
+            /* For very small screens (phones in landscape mode) */
+            .welcome-screen h1 {
+                font-size: 1.5rem;
+            }
+
+            .welcome-screen h2 {
+                font-size: 1rem;
+            }
+
+            .book-container {
+                width: 90vw; /* Even larger size */
+                height: 90vh; /* Even larger size */
+                padding: 5px;
+            }
+
+            .page h2 {
+                font-size: 1.2rem;
+            }
+
+            .nav-buttons button {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
 
 <!-- Welcome Screen -->
 <div class="welcome-screen">
-    <h1>Welcome to OK Sports Bar!</h1>
-
+    <h1>Welcome to OK Sports Bar <br> Digital Menu<br></h1>
 </div>
 
 <div class="wrapper">
@@ -183,121 +219,141 @@
         </div>
 
         <div class="book">
+
             <!-- Coffee Page -->
             <div class="page visible">
-
+                <h2>Coffee Menu</h2>
+                <br>
                 <div class="beverages-card">
-                    <h3>Coffee Menu</h3>
-
                     <div class="card-content">
                         <div class="beverage-item">
                             <h4>Espresso</h4>
                             <p>Strong and bold, served in a small cup.</p>
+                            <p class="price">$3.00</p>
                         </div>
-
                         <div class="beverage-item">
-                            <h4>Latte</h4>
+                            <h4>Cappuccino</h4>
                             <p>Creamy espresso with steamed milk.</p>
+                            <p class="price">$4.50</p>
                         </div>
-
+                        <div class="beverage-item">
+                            <h4>Coffee with milk</h4>
+                            <p>Creamy espresso with steamed milk.</p>
+                            <p class="price">$4.50</p>
+                        </div>
+                        <div class="beverage-item">
+                            <h4>Nespresso</h4>
+                            <p>Creamy espresso with steamed milk.</p>
+                            <p class="price">$4.50</p>
+                        </div>
+                        <div class="beverage-item">
+                            <h4>3in1</h4>
+                            <p>Creamy espresso with steamed milk.</p>
+                            <p class="price">$4.50</p>
+                        </div>
+                        <div class="beverage-item">
+                            <h4>Milk with Nescafe</h4>
+                            <p>Creamy espresso with steamed milk.</p>
+                            <p class="price">$4.50</p>
+                        </div>
                     </div>
-
                 </div>
-
             </div>
+
             <!-- Beverages Page -->
             <div class="page">
-
+                <h2>Beverages Menu</h2>
+                <br>
+                <h3>Popular Drinks</h3>
                 <div class="beverages-card">
-                    <h3>Beverages Menu</h3>
-
                     <div class="card-content">
                         <div class="beverage-item">
                             <h4>Coffee</h4>
                             <p>Start your day with a freshly brewed cup of coffee. Our menu includes:</p>
                             <ul>
-                                <li>Espresso</li>
-                                <li>Latte</li>
-                                <li>Cappuccino</li>
-                                <li>Americano</li>
+                                <li>Espresso - $3.00</li>
+                                <li>Latte - $4.50</li>
+                                <li>Cappuccino - $4.00</li>
+                                <li>Americano - $3.50</li>
                             </ul>
                         </div>
-
                         <div class="beverage-item">
                             <h4>Tea</h4>
                             <p>Relax with a cup of premium tea. Available varieties:</p>
                             <ul>
-                                <li>Black Tea</li>
-                                <li>Green Tea</li>
-                                <li>Herbal Tea</li>
-                                <li>Chai Latte</li>
+                                <li>Black Tea - $2.00</li>
+                                <li>Green Tea - $2.50</li>
+                                <li>Herbal Tea - $2.75</li>
+                                <li>Chai Latte - $3.50</li>
                             </ul>
                         </div>
-
                     </div>
-
                 </div>
             </div>
+
             <!-- Beer Page -->
             <div class="page">
-
+                <h2>Beer Menu</h2>
+                <br>
+                <h3>Our Beer Selection</h3>
                 <div class="beverages-card">
-                    <h3>Beer Menu</h3>
-
                     <div class="card-content">
                         <div class="beverage-item">
                             <h4>Light Beer</h4>
                             <p>Refreshing and easy-going with a light taste.</p>
+                            <p class="price">$5.00</p> <!-- Price added here -->
                         </div>
-
                         <div class="beverage-item">
                             <h4>IPA</h4>
                             <p>Bitter, hoppy, and full-bodied beer for true beer lovers.</p>
+                            <p class="price">$6.00</p> <!-- Price added here -->
                         </div>
-
                     </div>
                 </div>
             </div>
+
             <!-- Alcohol Page -->
             <div class="page">
-
+                <h2>Alcoholic Drinks Menu</h2>
+                <br>
+                <h3>Premium Spirits</h3>
                 <div class="beverages-card">
-                    <h3>Alcoholic Drinks Menu</h3>
-
                     <div class="card-content">
                         <div class="beverage-item">
                             <h4>Whiskey</h4>
                             <p>Strong, smooth, and perfect for sipping.</p>
+                            <p class="price">$8.00</p> <!-- Price added here -->
                         </div>
                         <div class="beverage-item">
                             <h4>Vodka</h4>
                             <p>Clean and versatile for cocktails.</p>
+                            <p class="price">$7.00</p> <!-- Price added here -->
                         </div>
                     </div>
-
                 </div>
             </div>
+
             <!-- Fast Food Page -->
             <div class="page">
-
+                <h2>Fast Food Menu</h2>
+                <br>
+                <h3>Delicious Snacks</h3>
                 <div class="beverages-card">
-                    <h3>Fast Food Menu</h3>
-
                     <div class="card-content">
-
                         <div class="beverage-item">
                             <h4>Burgers</h4>
                             <p>Juicy, delicious burgers with various toppings.</p>
+                            <p class="price">$6.50</p> <!-- Price added here -->
                         </div>
-
                         <div class="beverage-item">
                             <h4>Fries</h4>
                             <p>Crispy fries, perfect for any meal.</p>
+                            <p class="price">$2.50</p> <!-- Price added here -->
                         </div>
-
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -307,7 +363,7 @@
     setTimeout(() => {
         document.querySelector('.welcome-screen').style.display = 'none';
         document.querySelector('.book-container').style.display = 'flex';
-    }, 2000);
+    }, 1500);
 
     // Flip book logic
     const pages = document.querySelectorAll('.page');
