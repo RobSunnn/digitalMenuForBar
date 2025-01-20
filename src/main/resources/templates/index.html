@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Bar Menu</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: rgba(34,71,255,0.88);
+            color: black; /* Black text */
+        }
+
+        /* Welcome Screen */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(60,75,118,0.69);
+            color: white;
+            font-size: 3rem;
+            animation: fadeOut 1s ease-in-out 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .wrapper {
+            display: flex; /* Use flexbox to center the container */
+            justify-content: center; /* Horizontally center the book-container */
+            align-items: center; /* Vertically center the book-container */
+            height: 100vh; /* Take up the full height of the viewport */
+        }
+
+        /* Flip Book Container */
+        .book-container {
+            display: none; /* Initially hidden */
+            width: 60vw; /* Reduced size */
+            height: 60vh; /* Reduced size */
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            background-color: white; /* Bright background for the book */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Book */
+        .book {
+            width: 100%;
+            height: 100%;
+            perspective: 2000px;
+            position: relative;
+        }
+
+        /* Pages */
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: white;
+            color: black;
+            border: 2px solid #ddd;
+            backface-visibility: hidden;
+            transform-origin: left;
+            transition: transform 0.8s;
+            z-index: 0;
+        }
+
+        .page.turn {
+            transform: rotateY(-180deg); /* Flip the page */
+        }
+
+        .page.visible {
+            z-index: 1; /* Bring the current page to the front */
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+
+        .nav-buttons button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .nav-buttons button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Beverage Card Styles */
+        .beverages-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .beverages-card h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .card-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .beverage-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .beverage-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .beverage-item ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .beverage-item ul li {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        @media (max-width: 768px) {
+            .card-content {
+                grid-template-columns: 1fr; /* Stack the items vertically on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Welcome Screen -->
+<div class="welcome-screen">
+    <h1>Welcome to OK Sports Bar!</h1>
+
+</div>
+
+<div class="wrapper">
+    <!-- Flip Book Menu -->
+    <div class="book-container">
+        <div class="nav-buttons">
+            <button id="prevBtn">❮</button>
+            <button id="nextBtn">❯</button>
+        </div>
+
+        <div class="book">
+            <!-- Coffee Page -->
+            <div class="page visible">
+
+                <div class="beverages-card">
+                    <h3>Coffee Menu</h3>
+
+                    <div class="card-content">
+                        <div class="beverage-item">
+                            <h4>Espresso</h4>
+                            <p>Strong and bold, served in a small cup.</p>
+                        </div>
+
+                        <div class="beverage-item">
+                            <h4>Latte</h4>
+                            <p>Creamy espresso with steamed milk.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- Beverages Page -->
+            <div class="page">
+
+                <div class="beverages-card">
+                    <h3>Beverages Menu</h3>
+
+                    <div class="card-content">
+                        <div class="beverage-item">
+                            <h4>Coffee</h4>
+                            <p>Start your day with a freshly brewed cup of coffee. Our menu includes:</p>
+                            <ul>
+                                <li>Espresso</li>
+                                <li>Latte</li>
+                                <li>Cappuccino</li>
+                                <li>Americano</li>
+                            </ul>
+                        </div>
+
+                        <div class="beverage-item">
+                            <h4>Tea</h4>
+                            <p>Relax with a cup of premium tea. Available varieties:</p>
+                            <ul>
+                                <li>Black Tea</li>
+                                <li>Green Tea</li>
+                                <li>Herbal Tea</li>
+                                <li>Chai Latte</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- Beer Page -->
+            <div class="page">
+
+                <div class="beverages-card">
+                    <h3>Beer Menu</h3>
+
+                    <div class="card-content">
+                        <div class="beverage-item">
+                            <h4>Light Beer</h4>
+                            <p>Refreshing and easy-going with a light taste.</p>
+                        </div>
+
+                        <div class="beverage-item">
+                            <h4>IPA</h4>
+                            <p>Bitter, hoppy, and full-bodied beer for true beer lovers.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Alcohol Page -->
+            <div class="page">
+
+                <div class="beverages-card">
+                    <h3>Alcoholic Drinks Menu</h3>
+
+                    <div class="card-content">
+                        <div class="beverage-item">
+                            <h4>Whiskey</h4>
+                            <p>Strong, smooth, and perfect for sipping.</p>
+                        </div>
+                        <div class="beverage-item">
+                            <h4>Vodka</h4>
+                            <p>Clean and versatile for cocktails.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- Fast Food Page -->
+            <div class="page">
+
+                <div class="beverages-card">
+                    <h3>Fast Food Menu</h3>
+
+                    <div class="card-content">
+
+                        <div class="beverage-item">
+                            <h4>Burgers</h4>
+                            <p>Juicy, delicious burgers with various toppings.</p>
+                        </div>
+
+                        <div class="beverage-item">
+                            <h4>Fries</h4>
+                            <p>Crispy fries, perfect for any meal.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Hide the welcome screen and show the book after 3 seconds
+    setTimeout(() => {
+        document.querySelector('.welcome-screen').style.display = 'none';
+        document.querySelector('.book-container').style.display = 'flex';
+    }, 2000);
+
+    // Flip book logic
+    const pages = document.querySelectorAll('.page');
+    let currentPage = 0;
+
+    const updateBook = () => {
+        pages.forEach((page, index) => {
+            if (index === currentPage) {
+                page.classList.add('visible'); // Ensure the page is visible
+                page.classList.remove('turn');  // Remove turn class for the current page
+            } else {
+                page.classList.remove('visible'); // Hide the page
+                page.classList.add('turn');       // Add turn class for non-current pages
+            }
+        });
+    };
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        currentPage = (currentPage + 1) % pages.length; // Loop back to first page after last
+        updateBook();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        currentPage = (currentPage - 1 + pages.length) % pages.length; // Loop back to last page before first
+        updateBook();
+    });
+
+    // Initialize book state
+    updateBook();
+</script>
+
+</body>
+</html>
