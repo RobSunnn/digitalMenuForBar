@@ -13,6 +13,11 @@
             color: black; /* Black text */
         }
 
+        img {
+            display: block;
+            width: 100%;
+        }
+
         /* Welcome Screen */
         .welcome-screen {
             position: fixed;
@@ -71,7 +76,7 @@
             width: 100%;
             height: 100%;
             background: white;
-            color: black;
+            color: whitesmoke;
             border: 2px solid #ddd;
             backface-visibility: hidden;
             transform-origin: left;
@@ -201,6 +206,14 @@
             }
         }
 
+        .coffee-page {
+            background-image: url('https://media.istockphoto.com/id/501240691/photo/nespresso-coffe.jpg?s=612x612&w=0&k=20&c=8XUmS2AY85sSn7Ig8yRHLRRI9PyH-BSSAVYbTJZU4Mw=');
+            background-size: cover; /* Ensures the image covers the entire container */
+            background-position: center; /* Centers the image in the container */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            width: 100%; /* Ensure the element spans the full width */
+        }
+
     </style>
 </head>
 <body>
@@ -221,7 +234,7 @@
         <div class="book">
 
             <!-- Coffee Page -->
-            <div class="page visible">
+            <div class="page coffee-page visible">
                 <h2>Coffee Menu</h2>
                 <br>
                 <div class="beverages-card">
